@@ -1,0 +1,7 @@
+/run/media/kato/SSD2/MyPrograms/C/calculator/build/Desktop_Debug/CMakeFiles/calculator.dir
+/run/media/kato/SSD2/MyPrograms/C/calculator/build/Desktop_Debug/CMakeFiles/edit_cache.dir
+/run/media/kato/SSD2/MyPrograms/C/calculator/build/Desktop_Debug/CMakeFiles/rebuild_cache.dir
+/run/media/kato/SSD2/MyPrograms/C/calculator/build/Desktop_Debug/CMakeFiles/list_install_components.dir
+/run/media/kato/SSD2/MyPrograms/C/calculator/build/Desktop_Debug/CMakeFiles/install.dir
+/run/media/kato/SSD2/MyPrograms/C/calculator/build/Desktop_Debug/CMakeFiles/install/local.dir
+/run/media/kato/SSD2/MyPrograms/C/calculator/build/Desktop_Debug/CMakeFiles/install/strip.dir
