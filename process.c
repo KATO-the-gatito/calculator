@@ -3,7 +3,7 @@
 #include "calculate.h"
 
 double process(char *expr_str, char *expr_end) {
-    printf("%s\n", expr_str);
+    // printf("%s\n", expr_str);
     ptrdiff_t expr_len = expr_end - expr_str;
     char buff_str[expr_len];
 
@@ -17,9 +17,9 @@ double process(char *expr_str, char *expr_end) {
             Pair *expr_par = (Pair *)malloc(sizeof(Pair) * size);
 
             parse(begin_ptr, end_ptr, expr_par);
-            print_parsed(expr_par, size);
+            // print_parsed(expr_par, size);
             calc(expr_par, &size);
-            print_parsed(expr_par, size);
+            // print_parsed(expr_par, size);
 
             char num_str[NUM_SIZE];
             snprintf(num_str, NUM_SIZE, "%.17g", expr_par->num);
@@ -31,7 +31,7 @@ double process(char *expr_str, char *expr_end) {
 
             strcpy(expr_str, buff_str);
 
-            printf("%.*s\n",  (int)(expr_end - expr_str), expr_str);
+            // printf("%.*s\n",  (int)(expr_end - expr_str), expr_str);
 
             free(expr_par);
             ptr = expr_str;
