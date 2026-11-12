@@ -24,12 +24,10 @@ double process(char *expr_str, char *expr_end) {
             char num_str[NUM_SIZE];
             snprintf(num_str, NUM_SIZE, "%.17g", expr_par->num);
 
-            int diff = (int)(begin_ptr - expr_str);
-            snprintf(buff_str, diff + 1, "%s", expr_str);
-            strcpy(buff_str + diff, num_str);
-            strcpy(buff_str + diff + strlen(num_str), end_ptr + 1);
+            strcpy(buff_str, num_str);
+            strcpy(buff_str + strlen(num_str), end_ptr + 1);
 
-            strcpy(expr_str, buff_str);
+            strcpy(begin_ptr, buff_str);
 
             // printf("%.*s\n",  (int)(expr_end - expr_str), expr_str);
 
