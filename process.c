@@ -5,7 +5,7 @@
 double process(char *expr_str, char *expr_end) {
     // printf("%s\n", expr_str);
     ptrdiff_t expr_len = expr_end - expr_str;
-    char buff_str[expr_len];
+    char *buff_str = malloc(expr_len * sizeof(char));
 
     char *ptr = expr_str;
     for (; *ptr != '\0'; ++ptr) {
@@ -36,6 +36,7 @@ double process(char *expr_str, char *expr_end) {
         }
 
     }
+    free(buff_str);
     return strtod(expr_str, NULL);
 }
 

@@ -14,7 +14,7 @@ int main(int argc, char **argv)
     }
 
     size_t arg_len = strlen(argv[1]);
-    char expr_str[arg_len + 3];
+    char *expr_str = malloc((arg_len + 3) * sizeof(char));
 
     if (!reformat(expr_str, argv[1], arg_len)){
         printf("Error: Incorrect expression\n");
@@ -30,6 +30,8 @@ int main(int argc, char **argv)
         return 0;
     }
     printf("result: %.17g\n", result);
+
+    free(expr_str);
 
     return 0;
 }
