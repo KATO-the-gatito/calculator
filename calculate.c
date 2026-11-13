@@ -1,7 +1,9 @@
 #include "common.h"
 #include "calculate.h"
+#include "flags.h"
 
 const char operations[CNT_OF_STDOPS] = {'^', '/', '*', '%', '-', '+', '(', ')'};
+extern struct Flags flags;
 
 int count_ops(char* begin_ptr, char *end_ptr) {
     size_t cnt = 0;
@@ -41,6 +43,8 @@ double get_num(char *expr_ptr) {
 ////////////////////////////////////////////////////////
 
 void calc(Pair *expr_par, size_t *size) {
+    if (flags.steps_f)
+        print_str(expr_par, *size);
     for (int ops_i = 0; ops_i < CNT_OF_STDOPS - 1; ++ops_i) {
         for (int i = 0; i < *size; ++i) {
             if (expr_par[i].op == operations[ops_i]) {
@@ -49,10 +53,11 @@ void calc(Pair *expr_par, size_t *size) {
                 for (int j = i + 1; j < *size; ++j) {
                     expr_par[j] = expr_par[j + 1];
                 }
-                // print_str(expr_par, *size);
                 --i;
+
+                if (flags.steps_f)
+                    print_str(expr_par, *size);
             }
-            // printf("%d %ld %c\n", i, *size, operations[ops_i]);
         }
     }
 }

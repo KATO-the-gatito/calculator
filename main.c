@@ -1,31 +1,30 @@
 #include "common.h"
 #include "process.h"
+#include "flags.h"
 
-struct {
-    bool clean_f : 1;
-} flags = {0};
+extern struct Flags flags;
 
 int main(int argc, char **argv)
 {
-    for (char **arg = argv; *arg != NULL; ++arg) {
-        if (!strcmp(*arg, "-c") || !strcmp(*arg, "--clean")) {
-            flags.clean_f = true;
-        }
-    }
-
     size_t arg_len = strlen(argv[1]);
     char *expr_str = malloc((arg_len + 3) * sizeof(char));
+    char *input_expr = NULL;
 
-    if (!reformat(expr_str, argv[1], arg_len)){
+    if (!process_flags(argc, argv, &input_expr)) {
+        printf("Error: Incorrect flags\n");
+        return -1;
+    }
+    if (!reformat(expr_str, input_expr, arg_len)){
         printf("Error: Incorrect expression\n");
         return -1;
     }
 
-    // printf("%s\n", expr_str);
+    if (flags.steps_f)
+        printf("given expr: %s\n", expr_str);
 
     double result = process(expr_str, expr_str + arg_len + 3);
 
-    if (flags.clean_f) {
+    if (flags.clean_f && !flags.steps_f) {
         printf("%.17g\n", result);
         return 0;
     }

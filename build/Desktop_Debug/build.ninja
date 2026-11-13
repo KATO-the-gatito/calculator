@@ -85,6 +85,15 @@ build CMakeFiles/calculator.dir/common.c.o: C_COMPILER__calculator_unscanned_Deb
   OBJECT_FILE_DIR = CMakeFiles/calculator.dir
   TARGET_SUPPORT_DIR = CMakeFiles/calculator.dir
 
+build CMakeFiles/calculator.dir/flags.c.o: C_COMPILER__calculator_unscanned_Debug /run/media/kato/SSD2/MyPrograms/C/calculator/flags.c || cmake_object_order_depends_target_calculator
+  CONFIG = Debug
+  DEFINES = -DQT_QML_DEBUG
+  DEP_FILE = CMakeFiles/calculator.dir/flags.c.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/calculator.dir
+  OBJECT_FILE_DIR = CMakeFiles/calculator.dir
+  TARGET_SUPPORT_DIR = CMakeFiles/calculator.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target calculator
@@ -93,7 +102,7 @@ build CMakeFiles/calculator.dir/common.c.o: C_COMPILER__calculator_unscanned_Deb
 #############################################
 # Link the executable calculator
 
-build calculator: C_EXECUTABLE_LINKER__calculator_Debug CMakeFiles/calculator.dir/main.c.o CMakeFiles/calculator.dir/calculate.c.o CMakeFiles/calculator.dir/process.c.o CMakeFiles/calculator.dir/common.c.o
+build calculator: C_EXECUTABLE_LINKER__calculator_Debug CMakeFiles/calculator.dir/main.c.o CMakeFiles/calculator.dir/calculate.c.o CMakeFiles/calculator.dir/process.c.o CMakeFiles/calculator.dir/common.c.o CMakeFiles/calculator.dir/flags.c.o
   CONFIG = Debug
   DEP_FILE = CMakeFiles/calculator.dir/link.d
   FLAGS = -g

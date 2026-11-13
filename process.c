@@ -1,17 +1,24 @@
 #include "common.h"
 #include "process.h"
 #include "calculate.h"
+#include "flags.h"
+
+extern struct Flags flags;
 
 double process(char *expr_str, char *expr_end) {
     // printf("%s\n", expr_str);
     ptrdiff_t expr_len = expr_end - expr_str;
     char *buff_str = malloc(expr_len * sizeof(char));
-
     char *ptr = expr_str;
+    unsigned step = 0;
+
     for (; *ptr != '\0'; ++ptr) {
         if (*ptr == ')') {
             char *end_ptr = ptr, *begin_ptr = ptr;
             for (; *begin_ptr != '('; --begin_ptr);
+
+            if (flags.steps_f)
+                printf("<step %d>\n", ++step);
 
             size_t size = count_ops(begin_ptr, end_ptr) + 1;
             Pair *expr_par = (Pair *)malloc(sizeof(Pair) * size);
@@ -49,7 +56,7 @@ bool reformat(char *dest_str, char *src_str, size_t src_len) {
         }
         if (*ptr == ')') --cntr;
         if (!isdigit(*ptr) && !is_op(*ptr) && *ptr != '.' &&
-            *ptr != ' ' && *ptr != ',') return false;
+            *ptr != ' ' && *ptr != ',' && *ptr != '\'') return false;
         if (*ptr == ',') *ptr = '.';
 
     }
@@ -57,7 +64,7 @@ bool reformat(char *dest_str, char *src_str, size_t src_len) {
 
     *dest_str = '(';
     for (int i = 0, j = 1; src_str[i] != '\0'; ++i) {
-        if (src_str[i] != ' ') {
+        if (src_str[i] != ' ' && src_str[i] != '\'') {
             dest_str[j] = src_str[i];
             ++j;
         }

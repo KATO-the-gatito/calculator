@@ -6,7 +6,8 @@ add_executable(calculator main.c
     calculate.h calculate.c
     common.h
     process.h process.c
-    common.c)
+    common.c
+    flags.h flags.c)
 target_link_libraries(calculator PRIVATE m)
 
 include(GNUInstallDirs)
