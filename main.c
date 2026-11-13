@@ -24,7 +24,7 @@ int main(int argc, char **argv)
 
     double result = process(expr_str, expr_str + arg_len + 3);
 
-    if (flags.clean_f && !flags.steps_f) {
+    if (flags.clean_f) {
         printf("%.17g\n", result);
         return 0;
     }
